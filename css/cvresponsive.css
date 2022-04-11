@@ -3,7 +3,7 @@
 
 :root {  /*Para la VARIABLE CSS*/
     --theme-color: white; /*Así se ponen las VARIABLES: --nombre de la variable-y xej el color y luego el valor. Si algun dia quiero cambiar el color de la variable lo cambio acá y se cambiara en cada lugar que la hemos usado.*/
-    --primary-color: #124f88 ;
+    --primary-color: #124f88;
     --secundary-color: #F7C331;
     --text-color-inverse: white;
     --text-color: black;

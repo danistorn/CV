@@ -162,15 +162,16 @@
                     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
                 
                 </div>
-                <div class="contact-input">
-                <form action="enviar.php" method="post">
+                <div class="contact-input" >
+                <form  action="https://formspree.io/f/mqknypgl"
+                method="POST">
                     <p class="contact-texto">Nombre</p>
-                    <input type="text" class="nombre" name="nombre" placeholder="Nombre" required >
+                    <input type="text" class="nombre" name="name" placeholder="Nombre" required >
                     <p class="contact-texto">Email</p>
-                    <input type="text" class="email" name="email" placeholder="Email" required >
+                    <input type="email" class="email" name="_replyto" placeholder="Email" required   >
                     <p class="contact-texto">Mensaje</p>
-                    <textarea name="mensaje" placeholder="Escriba aquí su mensaje" id="" required></textarea>
-                    <input type="button" value="Enviar" id="boton"> 
+                    <textarea name="message" placeholder="Escriba aquí su mensaje" id="" required></textarea>
+                    <input type="submit" value="Enviar" id="boton"> 
                 </form>
                 </div>
                 </div>
