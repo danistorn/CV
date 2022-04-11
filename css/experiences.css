@@ -1,0 +1,152 @@
+
+.experiences{       /*Para integrar las olas wave con el contenido*/
+    display: flex;  /*Con esto sólo: va a aparecer una wave, al lado el texto, y al lado la otra wave */
+    flex-direction: column; /*Los ubicamos en una columna. Uno abajo del otro*/
+}
+
+.experiences-body {
+    background-color: var(--primary-color);
+    color: var(--text-color-inverse);
+}
+
+.wave {     /*Para que las ondas se vean bien y esten integradas con el contenido*/
+    width: 100%;    
+    position: relative;  /*Ésto es para mover la ola/wave 2 pixeles hacia abajo de su posicion actual, en caso de que este algo separada del bloque del texto del medio y avitar así que se forme una franja en el medio */
+    top: 2px;
+}
+
+.wave_bottom{
+    transform: scaleY(-1);  /*Giramos la ola/wave. Le damos un flip, una vuelta de 180°. La invertimos.*/
+    top: -2px;  /*El wave es un class que puse en la ola de arriba y la de abajo, por lo que a "wave-bottom" tmbn le afecta el "position: relative" que le puse a "wave".  Y acá además le quitamos esos 2px que le habiamos puesto con "wave"*/
+}
+
+
+/*/////////////////////*/
+
+
+.experiences-title {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-weight: 30px;
+    font-size: 30px;
+    margin: 25px;
+}
+
+
+.experience-date {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--secundary-color);
+}
+
+
+.experience-company {
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+.experience-position {
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.experience-description {
+    font-weight: 400;
+    font-size: 15px;
+    margin-top: 10px;
+
+}
+/*/////////////////////*/
+
+.experience {   /*Para añadir un poco de espacio alrededor de cada experiencia*/
+    padding: 25px;
+    max-width: 500px; /*Para que al ampliar la pantalla, que el texto no este a todo lo largo. Maximo de 6-7-8 palabras es lo que se suele usar. */
+    margin: 0 auto; /*Centro todo el contenido*/ 
+}
+
+
+
+@media (min-width: 950px) {     /*MEDIA QUERY para adaptarlo a dispositivos de escritorio.*/
+    .experiences-title {
+        font-size: 50px;
+        margin: 35px 0;
+    }
+    
+    
+    .experience-date {
+        font-size: 40px;
+    }
+    
+    
+    .experience-company {
+        font-size: 25px;
+    }
+    
+    .experience-position { 
+        font-weight: bold;
+        font-size: 20px;
+        margin-top: 20px;
+    }
+    
+    .experience-description {
+        font-size: 20px;
+        margin-top: 10px;
+        line-height: 1.3;
+    }   
+
+
+    .experience {   /*SOBREESCRIBO EL PADDING DE "ESPERIENCE" */ 
+        padding: 0;
+    }
+
+    .experience_left {      /*Para que el texto del medio (el que esta del lado izq de la linea) se alinée como los otros, pegados a la linea. En este caso hacia la derecha.*/
+        text-align: right;  
+    }
+
+
+    .experiences-grid {
+        display: grid;  /*Con esto, el elemento "experiences-grid" se reconoce como un grid. Y sus hijos de primer nivel son "grid-items". Son items o elementos de ese grid. */
+        grid-template-columns: auto 2px auto;  /*El cancho de cada columna. La 1ra, la 2da y la 3ra. A la del medio le pongo 2px porque queremos que esa sea en la que vamos la poner la columna central. Y las otras agarraran el espacio disponible.  */
+        gap: 20px 70px;
+        padding: 70px;
+        justify-content: center;
+        max-width: 980px; /*Éste y el margen de abajo son para que los elementos del menu (PERFIL/EXPERIENCIA/HABILIDADES/CONTACTOS) esten alineados con el resto del contenido de la pagina. Osea el espacio de la derecha de al lado de CONTACTOS sea el mismo espacio que el que tiene el texto de las "experiencias" y etc*/
+        margin: 0 auto; /*Arriba y abajo cero, izq/der automatico*/ 
+    }
+
+
+
+
+
+    .line {        /*La linea blanca en medio de las experiencias*/
+        background-color: var(--text-color-inverse);
+        position: relative;  /*Ésto se coloca porque los circulos queiro que esten con un poosition absolute con respecto a la linea. Por eso, para eso, tengo que ponerle un "position: relative" a la linea.*/
+    }
+
+
+    /* //// CIRCULOS DE LA LINEA //// Se usan "pseudoelementos". Son elementos que se van a posicionar antes y despues de el contenido de mi elemento que en este caso es la linea. */
+    .line::before,
+    .line::after {
+        content: "";   /*La palabra "content" es clave para que se vea.*/
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-color: var(--text-color-inverse);
+        border-radius: 50%; /*Escribiendo solo hasta aca, se forman 2 circulos: el before y el after*/ 
+
+        position: absolute; /*Para posicionar los circulos al comienzo y final de cada linea. El elemento va a estar posicionado de forma absoluta con respecto a la línea, asi que le pongo "position: relative" a "line". Con esto pongo el before y el after uno encima del otro. */
+        top: -20px;
+        left: -9px;
+    }
+
+
+    .line::after{
+        top: 100%; /*Tendra todos los estilos que tienen "line::before" y "line::after", pero le sobreescribo el "top:-20px". Con ésto hago que este para abajo del tope del 100% de la linea.*/ 
+        z-index: 1; /*Para que a el ultimo circulo, el de abajo de todo, no lo tape la imagen ola/wave de abajo.*/
+    }
+
+
+} 

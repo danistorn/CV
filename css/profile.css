@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap');
+
+
+.profile-info {
+    margin-bottom: 25px;  /* Con ésto me aseguro de que la info este un poco separada de la imagen*/    
+}
+
+
+.profile-img{
+    width: 80%;  /* El ancho de mi foto va a a ser el 80% de mi pagina.. */
+    max-width: 300px;  /* ..pero que no crezca más de esta cantidad. Así ante una pantalla enorme no va a ser una imagen desproporcionadamente gigante.*/
+}
+
+.profile-img-section {
+    position: relative;  /*Queremos que esa linea se desacople de todo mi diseño y que se acople de forma absoluta en la parte inferior de mi seccion "img-section" */
+}
+
+.profile-img-line{    /*La linea agarra todo el ancho porque el "profile-img-section" es un div, y los div agarran todo el ancho. Tenemos dos opciones: podemos cambiar ese "div" a un "span", o poner "display:inline" en "profile-img-section"  */
+    background-color: var(--secundary-color);
+    height: 15px;
+    position: absolute;  /*Queremos que esa linea se desacople de todo mi diseño y que se acople de forma absoluta en la parte inferior de mi seccion "img-section". Osea va a estar posicionada de forma absoluta con respecto al primer padre que este posicionado (en este caso la seccion que esta posicionada con position: relative) */
+    width: 100%; 
+    left: 0; /* Así siempre va a estar en la parte inferior de mi div*/
+    bottom: 0;
+}
+
+.descargar{
+    color: var(--theme-color);
+}
+
+
+
+.profile {
+    text-align: center; /*Quiero que todos los elementos esten centrados*/
+}
+
+
+.profile-title{
+    font-size: 35px;
+    font-weight: bold;
+    margin: 0;  /*para quitar los margenes automaticos que le agrega el navegador al h1*/
+    color: var(--primary-color);
+    font-family: 'Noto Sans', sans-serif; /*Arriba pegué el @import, la ruta que saqué de "google fonts", y acá lo aplico, junto con el respaldo.*/  
+}
+
+.profile-details {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    max-width: 450px; /*éste es importante porque si los parrafos tienen más de 6-7 palabras de ancho se vuelve ilegible. Con ésto el "text-align" deja de funcionar, por lo que paso a usar para este texto, un "margin"*/
+    margin: 20px auto; /* ..ésto lo uso para centrar el texto, ya que con el "max-width" el "text-align" deja de funcionar.*/
+}
+
+.profile-btn {  /*/// El botón de DESCARGAR CV ///*/
+    background-color: var(--primary-color);
+    color: var(--text-color-inverse);
+    border: none;
+    font-size: 20px;
+    padding: 0.5em 1em;  /* Usamos la unidad em. Ésta es relativa al tamaño fuente del elemento (al font-size). El padding superior/inferior e izq/der. Así, si cambio el tamaño de la fuente, los passings van a ser siempre relativos a ese tamaño de fuente. El padding se va a ajustar. Muy importante para una web responsive (nos ahorramos mediaquerys y más) */
+    border-radius: 7px;
+    cursor: pointer;          
+}
+
+
+.profile-btn:hover {    /*El :hover sería una pseudo-clase*/
+    filter:brightness(130%);
+}
+
+
+
+
+
+/*////  DISPOSITIVO DE ESCRITORIO. Usamos una media-query  ////*/
+
+@media (min-width: 950px) {
+
+    .profile-info {
+        margin-bottom: 0px;  /* Con ésto me aseguro de que la info este un poco separada de la imagen*/    
+    }
+
+
+    .profile-img{
+        width: 100%;  /* El ancho de mi foto va a a ser el 80% de mi pagina.. */
+        max-width: 350px;  /* ..pero que no crezca más de esta cantidad. Así ante una pantalla enorme no va a ser una imagen desproporcionadamente gigante.*/
+        transform: scaleX(-1); /*Cambio espejo la imagen*/
+    }
+
+
+
+
+    .profile {  /* "profile"  tiene 2 div dentro: El titulo e info, y la imágen. */
+        text-align: left; /*El texto con el que me presento que este hacia la izquieda en vez de centrado.*/
+        display: flex; /* Con "display:flex" ésta seccion pasa a ser un "flexbox". Los div de adentro (los hijos del 1er nivel, el div y el span) pasan a ser flex-items. */
+        justify-content: space-between;
+        max-width: 980px; /*Limite del espaciado de arriba.*/
+        margin: 0 auto; /*Para centrar los elementos cuando tengamos más de 980px */
+        align-items: center;  /* Esto es para que la linea de debajo de la imagen no se aleje de ésta. Se centra en el eje vertical en vez de estar estirado hacia todo el eje vertical como seria por defecto. */
+    }
+
+
+    .profile-title{
+        font-size: 60px;
+    }
+
+    .profile-details {
+        font-size: 25px;
+        font-weight: 500;
+        line-height: 1.3;
+        max-width: 450px; /*éste es importante porque si los parrafos tienen más de 6-7 palabras de ancho se vuelve ilegible. Con ésto el "text-align" deja de funcionar, por lo que paso a usar para este texto, un "margin"*/
+        margin: 30px 0; /* ..ésto lo uso para centrar el texto, ya que con el "max-width" el "text-align" deja de funcionar.*/
+    }
+
+    .profile-btn {  /*/// El botón de DESCARGAR CV ///*/
+        font-size: 28px;
+    }
+
+
+    .profile-btn:hover {    /*El :hover sería una pseudo-clase*/
+        filter:brightness(130%);
+    }
+   
+}

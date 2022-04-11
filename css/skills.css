@@ -1,0 +1,48 @@
+.skills {       /*Si tenemos demasiados skills se van a poner a lo largo de la pantalla y eso no quedaria bien visualmente. por eso hacemos esto:*/
+    max-width: 980px;
+    margin: 0 auto;  /*Al ponerle un ancho fijo siempre va a estar alineado a la izq y con un margen fijo,  por eso hay que arreglar esto*/
+}
+
+
+.skills-title{
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.skills-skill {
+    font-size: 20px;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 42px;
+    padding: 0.5em 0.7em;
+    margin: 10px;
+}
+
+
+.skills-list {
+    list-style: none;
+    padding: 0; /*Porque por defefcto las listas agregan un padding-left para colocar ese puntito que tienen, que saqué con el "list-style: none" */
+
+    display: flex;  /*Por defecto esta en no-wrap*/
+    flex-wrap: wrap; /*Para que desaparezca el scoll automatico hacia los costados y que en su lugar vayan hacia abajo.*/
+    justify-content: center;
+}
+
+
+
+
+
+@media (min-width: 950px) {  /*950 es simplemente el ancho que él considera que es para escritorio.*/
+    .skills-title{
+        font-size: 50px;
+    }
+    
+    .skills-skill {
+        font-size: 30px;
+        margin: 20px;  /*Para que los elementos tengan un espaciado un poquito mas grande en los dispositivos de escritorio */
+    }
+    
+
+}

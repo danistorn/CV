@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniela Stornelli</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!--Fuente de Google Font al principio, antes que nada.-->
+    
+    <!--//////NORMALIZE CSS. Libreria para quitar los css predeterminados/////-->
+    <link  
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"
+    />
+    <link rel="stylesheet" href="css/cvresponsive.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/skills.css">
+    <link rel="stylesheet" href="css/experiences.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <script defer src="js/app.js"></script> <!--Con "defer" lo que hago es diferir la ejecución de éste script hasta que se haya cargado el DOM completamente. Luego sí se ejecutará.-->
+</head>
+<body>
+    <header class="topheader">
+        <nav class="topnav">
+            <a ref="#" class="logo">  <!--Un enlace porque quiero que esta seccion de mi logo sea clickeable para que vaya al inicio de la pagina-->
+                <img 
+                    height="55" 
+                    width="50" 
+                    src="img/cvfoto.jpg"   
+                    alt="programadora"
+                />
+            <div>Daniela Stornelli</div>
+            </a>
+
+
+            <!--////BOTON MENU HAMBURGUESA////-->
+            <button class="open-menu" aria-label="Abrir menú">  <!--"aria-label" sirve para que la pag sea accesible para ususarios con discapacidad. Leeran la pag con un lector y éste les dirá que hace cada boton gracias al "area-label"-->              
+                <img src="img/hamburger-icon.svg" alt="abrir menú">
+            </button>
+            
+            <!--//////MENÚ/////-->
+            <ul class="menu"> <!--listado desordenado-->
+            
+                <button class="close-menu" aria-label="Cerrar menú">  <!--Usar "BOTÓN" (button), me va a permitir que yo navegue con el teclado y al apretar espacio o enter se aprete ese botón. Si no usase "button" no sería muy accesible. -->
+                    <img src="img/close-icon.svg" alt="cerrar menú">
+                </button>
+            
+                <li><a href="#profile" class="selected">Perfil</a></li>
+                <li><a href="#experience">Experiencia</a></li> 
+                <li><a href="#skills">Habilidades</a></li>
+                <li><a href="#contact">Contactos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+        <div class="horizontal-padding vertical-padding">
+            <section class="profile" id="profile"> <!--El id "profile" se está conectado con el "#profile" -->
+                <div class="profile-info">  <!--///// 1er DIV-->
+                    <h1 class="profile-title">Hola, soy <br/> Daniela Stornelli</h1>
+                    <p class="profile-details">
+                        Soy una apasionada por el desarrollo de software, estudiante autodidacta con más de tres años de experiencia en proyectos personales.
+                    </p>
+                    <button class="profile-btn">
+                        <a href="CV.pdf" class="descargar" download>Descargar cv</a>
+                    </button>
+                </div>
+                <span class="profile-img-section"> <!-- ///// 2do DIV creamos 2 div (el anterior y este) pensando como se va a ver en dispositivos de escritorio. Para que ahí se vea la imagen al lado y poder acomodarlo bien con flexbox -->
+                    <img
+                        class="profile-img"
+                        src="img/fotoperfil.png"
+                        alt="programadora"
+                    />
+                    <div class="profile-img-line"></div>
+                </span>
+            </section>
+        </div> 
+    
+        <section class="experiences" id="experience">
+            <img src="img/wave.svg" alt="división" class="wave"> <!--Es una imagen vectorial (svg). No importa cuanto aumentemos o disminuyamos el tamaño de la pantalla, la imagen nunca va a perder la nitidez porque esta hecha con formulas matematicas. -->
+            <div class="experiences-body">
+                <h2 class="experiences-title">Experiencia</h2>
+                    <div class="experiences-grid"> <!--La grilla de las experiencias-->
+                            <div class="empty"></div> <!--Con estos 2 dive (empty y line) hago el zic-zag. Acá nos queda: vacío/línea/experiencia -->
+                            <div class="line"></div>
+                        <div class="experience"> <!--Cada experiencia en particular.-->
+                            <div class="experience-date">2020</div>
+                            <div class="experience-company">Platzi</div>
+                            <div class="experience-position">Estudiante</div>
+                            <div class="experience-position">Desarrollo de cursos de Platzi y sus proyectos.</div>
+
+                        </div>
+                        <div class="experience experience_left"> <!--Cada experiencia en particular. Acá nos queda experiencia (con todo lo que tiene adentro ese div)/linea/vacío. -->
+                            <div class="experience-date">2021-2022</div>
+                            <div class="experience-company">Lyricism Swift</div>
+                            <div class="experience-position"></div>
+                            <div class="experience-position">Proyecto personal. Página dedicada a la discografía de la cantante Taylor Swift, creada con html, css, JavaScript y jQuery. </div>
+
+                        </div>
+                        <div class="line"></div>
+                        <div class="empty"></div>
+                        <div class="empty"></div> <!--Y luego empiezo devuelta alreves: empty/line/experiencia(con todo lo que tiene dentro) -->
+                        <div class="line"></div>
+                        <div class="experience"> 
+                            <div class="experience-date">2022</div>
+                            <div class="experience-company">CV responsive</div>
+                            <div class="experience-position"></div>
+                            <div class="experience-position">Desarrollo de un curriculum vitae responsive con html, css y JavaScript.</div>
+
+                        </div>
+                    </div>
+            </div>
+            <img src="img/wave.svg" alt="división" class="wave wave_bottom">  
+        </section>
+
+        <div class="horizontal-padding vertical-padding">
+
+            <section class="skills" id="skills">
+                <h2 class="skills-title">Habilidades</h2>
+                <ul class="skills-list">
+                    <li class="skills-skill">CSS</li>
+                    <li class="skills-skill">HTML</li>
+                    <li class="skills-skill">JavaScript</li>
+                    <li class="skills-skill">Python</li>
+                    <li class="skills-skill">MySQL</li>
+                    <li class="skills-skill">Git y GitHub</li>
+                </ul>
+            </section>
+
+        </div>    
+    
+        <section class="contact vertical-padding" id="contact">
+            
+            <section class="contact" id="contact">
+                   
+                <div class="contacts-card">
+                <div class="info">
+                    <h2 class="contact-title">Contacto</h2>
+
+                    <h2 class="contact-titulo">Dirección:</h2>
+                    <p class="contact-texto">Buenos Aires, Argentina</p>             
+
+                    <h2 class="contact-titulo">EMAIL:</h2>
+                    <p class="contact-texto">dsstornelli@gmail.com</p>
+                
+                    <p class="contact-texto">Deje su mensaje y con gusto le responderé</p><br><br>
+
+                    <a class="social-icon" href="https://github.com/danistorn" target="_blank">
+                        <ion-icon name="logo-github"></ion-icon>
+                    </a>
+
+                    <a class="social-icon" href="https://www.linkedin.com/in/dsstornelli/" target="_blank"  >
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                    
+
+                    
+                    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+                    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+                
+                </div>
+                <div class="contact-input">
+                <form action="enviar.php" method="post">
+                    <p class="contact-texto">Nombre</p>
+                    <input type="text" class="nombre" name="nombre" placeholder="Nombre" required >
+                    <p class="contact-texto">Email</p>
+                    <input type="text" class="email" name="email" placeholder="Email" required >
+                    <p class="contact-texto">Mensaje</p>
+                    <textarea name="mensaje" placeholder="Escriba aquí su mensaje" id="" required></textarea>
+                    <input type="button" value="Enviar" id="boton"> 
+                </form>
+                </div>
+                </div>
+            </section>
+        </section>
+    
+    </body>
+</html>

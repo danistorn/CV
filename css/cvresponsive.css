@@ -1,0 +1,72 @@
+/*Acá pongo las clases globales*/
+
+
+:root {  /*Para la VARIABLE CSS*/
+    --theme-color: white; /*Así se ponen las VARIABLES: --nombre de la variable-y xej el color y luego el valor. Si algun dia quiero cambiar el color de la variable lo cambio acá y se cambiara en cada lugar que la hemos usado.*/
+    --primary-color: #124f88 ;
+    --secundary-color: #F7C331;
+    --text-color-inverse: white;
+    --text-color: black;
+    --navbar-shadow-color: #e5e5e5;
+    --menu-mobile-background-color: #3a4460; /*El background en dispositivos moviles*/
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+section[id] {       /*Selecciono todos los "section" que tengan identificador.*/
+    scroll-margin-top: 80px;  /*Para que el menú, al seleccionar xej "experiecia" me lleve a esa parte de la pagina pero sin que el head/menu me tape nada de esa parte. */
+}
+
+
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--theme-color);
+    color: var(--text-color); /*color del texto*/
+    padding-top: 100px; /*El tamaño que tiene la barra de navegacion. Para que ésta no tape mi titulo "Hola, soy Dani"*/
+}
+
+
+a {
+    text-decoration: none;
+    color: var(--text-color); /*Definimos el color utilizando VARIABLE CSS*/
+}
+
+
+
+/*EN DISPOSITIVOS MOVILES, el padding minimo...*/
+
+.horizontal-padding {  
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+
+.vertical-padding{
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+
+
+/*EN DISPOSITIVOS DE ESCRITORIO, el padding minimo... (media-query) */
+
+@media (min-width: 950px) {
+    .horizontal-padding {  /*En dispositivos moviles, el padding minimo...*/
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    
+    .vertical-padding{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+
+}
+

@@ -1,0 +1,166 @@
+.topheader{
+    box-shadow: 0 4px 5px var(--navbar-shadow-color);  /* Sombreado debajo del header. orden: eje x, eje y, difuminado/blur, color */
+    position: fixed;  /*Con fixed lo fijo en mi viewport y el titulo no tiene en cuenta los espaciados. Para eso se pone el padding en el body (para que al titulo no lo cubra el heading)*/
+    width: 100%; /* Para centrarlo en todo lo ancho (se salía cuando ponía el position fixed*/
+    left: 0; /*Para que este fijado con respecto a la izq y al tope. Ésto por si le pusiese un margen al contenido, para que no le cambie el margen tmbn al header */
+    top: 0; 
+    background-color: var(--theme-color);
+    z-index: 100; /* Para que la imágen siempre vaya por detras del menú header que esta fijo arriba. Que cuando scrollée para abajo que la foto no se ponga arriba. Por tener "position-fixed" tambien es bueno agregarle "z-index" */    
+}
+
+.topnav{
+    display: flex; /*para que por defecto los elementos esten uno al lado del otro*/ 
+    justify-content: space-between;  /*Para que los elementos esten separados hacia una esquina y hacia otra esquina, con el espacio que queda disponible en el medio. Con "center" estarian juntitos en el medio de la pagina*/
+    padding: 10px; /*Espacio para que el contenido del header respire, que no este pegado a los margenes de la pantalla*/
+    max-width: 980px; /*Que el contenido del header tenga un ancho maximo. Al expandir más la página que llegue a tener un tope donde quede ahí*/ 
+    margin: 0 auto; /*Centrar el contenido del header con respecto al header. Si pongo solo 2 numeros el primero es arriba y abajo, el segundo (auto) izq y derecha*/
+}
+
+
+
+/*/////LOGO////*/
+.logo {
+    display: flex;
+    align-items: center; /*centramos/alineamos los elementos en el eje horizontal*/
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.logo img {
+    border-radius: 50%;
+}
+
+
+
+/* ////// Menú ////// */
+
+.menu{
+    display: flex;  /*Pone los elementos, por defecto, en fila*/
+    list-style: none;
+    margin: 0;     /*Lo "normalizo" para que en todos los navegadores esos espacios sean los mismos. Y asi poder definir esos datos yo normalmente  */
+    padding: 0; 
+}
+
+.menu li{
+    padding: 0 15px;
+}
+
+
+.menu a {
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 50px;
+    text-transform: uppercase;
+    position: relative; /*Para poder positionar el ::after por sobre los elementos del menú y no sobre la imgen de mi perfil.*/
+}
+
+
+/*/// SUBRRAYADO DE LOS ELEMENTOS DEL MENÚ ///*/
+.menu a::after {  /*Siempre que usemos el selector "after" le vamos a añadir un contenido "content"*/
+    content: "";
+    background-color: var(--secundary-color);
+    position: absolute; /*Para colocarlo abajo y no al costado. No ocupa ningun espacio concreto porque esta posicionado de forma absoluta*/ 
+    left: 0;
+    top: calc(100% + 4px); /*Si queremos que el subrayado este separado 4 pixeles*/
+    width: 100%;
+    height: 4px;
+
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.menu a.selected::after,
+.menu a:hover::after {
+    opacity: 0.8;
+}
+
+.menu a:hover {
+    color: var(--primary-color)
+}
+
+
+.open-menu,
+.close-menu{
+    display: none;  /*Que no se vean cuando estemos en dispositivos de escritorio*/
+}
+
+
+/*////////Que esos elementeos se vean/apliquen cuando estemos en dispositivos moviles: usamos un MEDIA QUERY/////////*/
+@media (max-width: 950px) {
+
+    /* ////// Menú ////// */
+    .menu{
+        flex-direction: column; /*Por defecto estan en fila. Lo uqieor poner en columna*/
+        position: fixed; /*Los desacoplo de ese menú superior y los fijo a mi viewport, a todo lo alto y ancho de mi pag*/
+        left: 0;
+        top: 0;
+        width: 100%;
+        align-items: center; /*Para alinearlo. Como lo tengo en columna (flex-direction:column) lo alineo en el eje transversal de la columna, osea en el eje de la fila, con "align-items"*/
+        background-color: var(--menu-mobile-background-color);
+        /*color: var(--text-color-inverse);  <-- Acá éste no funcionaria porque el color de los enlaces hay que sobreescribirlo directamente en los enlaces. (menu a) */
+        height: 100%; /*para que el background ocupe todo lo alto de mi dispositivo*/
+        overflow-y: auto; /*NUNCA OLVIDAR ESTO. Es para que, si el dispositivo es muy pequeño, tenemos demasiadas opciones, mucho zoom, etc, podamos hacerle scroll a todas las opciones del menú. Para poder ir para abajo y ver todo lo que hay. Si mi contenido esta muy apretado y se salga del alto de mi viewport. "y" porque es de arriba para abajo que se disponen los elementos y ese es el scroll que aparecería */ 
+    
+        /*opacity: 0.5;  <-- Poner ésto momentaneamente nos puede ayudar a alinear la "X" que quita el menú, con el "menú hamburguesa". Una vez alineados lo podemos borrar.*/
+        opacity: 0; /* Por defecto no queremos que este menú se vea. Queremos que se vea cuando le demos click al "menú hamburguesa". Eso lo hacemos con un Java Script*/
+        pointer-events: none; /*Si uso "opacity: 0;" quedan transparente pero siguen ahí, por lo que aún podemos pasar el cursor y hacerles click. Eso obviamente no queremos que pase por lo que con "pointer-events: none;" hacemos que además no les podamos hacer click. Ahora si es como si no existieran*/   
+        transition: opacity 0.3s; /*Para agregarle un pequeño efecto retardo y que el menú no abra de golpe y bruscamente. Eso es lo que va a tardar en aplicarse/transicionar hacia la opacidad de 1*/
+    }
+
+    .menu li{
+        padding: 0;
+    }
+
+
+    .menu a {       /*Los enlaces del menú.*/
+        color: var(--text-color-inverse);
+        line-height: 70px; /* "Alto de linea": el espacio entre líneas*/
+        font-size: 25px;
+    }
+
+    .open-menu,
+    .close-menu{
+        display: block; /*Para que se vean en los dispositivos moviles*/
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+
+    
+    .close-menu {
+        align-self: flex-end;  /*Todos los elementos estan alineados en el mismo lugar con "align-items", en el centro. Si a alguno de ellos lo quiero alinear de una forma diferente le pongo "align-self". EN este caso al final del flex*/        
+        padding: 21px 16px; /*El padding de la X y los elementos del menú (perfil-experiencia-habilidades-contactos) */
+    }
+
+
+    .menu_opened {  /*CONVENCIÓN: Lo separo con un guión bajo para indicar que es un modificador. Éste es un "class" que va a ser añadido/eliminado según esté "abierto" el menú. Para que esto funcione usamos un script, que se encargará de añadir o eliminar esa clase. (en el "app.js") */ 
+        opacity: 1; /*Cuando el menú está abierto el "opacity" va a estar en uno, asi se vé.*/
+        pointer-events: all;  /*Cuando el menú está abierto los eventos del puntero funcionan, así puedo hacer scroll y click y todi.*/  
+    }
+
+
+    .open-menu:focus:not(:focus-visible),  /* "focus-visibe" es el focus que se ve cuando vas con el tabulador. Con éste estilo, si tienen el focus pero éste no es del tipo "focus-visible", le indico que no muestre la linea exterior al clickearlo (outline). Con el ratón no lo mostrará, pero si voy con el teclado sí lo mostrará. */
+    .close-menu:focus:not(:focus-visible) {  /*  "Si el "close-menu" tiene el foco (:focus) pero éste focus no es del tipo (:none) "focus-visible", entonces que ocurra esto..."  */
+        outline: none;
+    }
+
+
+
+
+    .menu a::after {  /*Siempre que usemos el selector "after" le vamos a añadir un contenido "content"*/
+        content: none;  /*A éstos del menú hamburguesa no queremos que se les haga un subrayado amarillo sino que se pinten. */
+    }
+    
+    .menu a.selected::after,
+    .menu a:hover::after {
+        opacity: 0.8;
+    }
+    
+    .menu a:hover,      /*Cuando se le haga un hover o alguno de los elementos del enlace este seleccionado, qu el color sea ese. */
+    .menu a.selected {
+        color: var(--secundary-color);
+    }
+    
+}

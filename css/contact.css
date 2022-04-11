@@ -1,0 +1,134 @@
+body { margin: 0; }
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap');
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    }
+
+
+.contacts-card{
+    background-color: var( --primary-color);
+    color: var(--text-color-inverse);
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: auto; /*Para que la tarjeta se centre perfectamente en la pagina.*/
+    width: 1000px;
+    margin-top: 20px;
+    max-width: 1200px;
+    border-radius: 8px;
+    padding: 1em 1em;
+    box-sizing: border-box; /*A la tarjeta le di un width de 1000px. Pero si le agrego un padding de 1em en los constados, su ancho va a ser ese width de mil + ese padding. Para que se mantenga el ancho que quiero (mil) uso este "box-sizing: border-box;" Así el padding lo va a agregar pero hacia adentro. manteniendo el width que le habia indicado.  */
+}
+
+
+
+
+.contact-title{
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-weight: 30px;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+
+.contact-nombre,
+.contact-email,
+.contact-mensaje {
+    border-radius: 5px;
+    min-width: 340px;
+}
+
+/* .contact-nombre,
+.contact-email{
+    height: 25px;
+} */
+
+/* .contact-mensaje{
+    height: 100px;
+} */
+
+
+
+/*Separo con un espacio lo de la derecha de la tarjeta (info) y la izquierda (los inputs)*/
+.info,
+.contact-input {
+
+    margin: 50px;
+    text-align: top;
+    max-width: 400px; /*El largo de los cuadros de texto*/
+}
+
+
+.contact #boton{
+    margin-top:20px;
+    min-width: 350px;
+    border-radius: 5px;
+    background-color: var(--text-color);
+    color: var(--theme-color);
+    height: 30px;
+}
+
+.contact #boton:hover{
+    cursor: pointer;
+}
+
+
+
+.social-icon {
+    color: var(--theme-color);
+    font-size: 30px;
+    margin: 0 10px;
+}
+
+
+.contact-texto {
+    font-family: 'Mukta', sans-serif;
+    padding: 10px 0;
+}
+
+
+input, textarea{
+    width:100%;
+    margin-bottom: 20px; /*Separar los cuadros de dialogo entre sí*/
+    padding: 7px; /*Cuadros de dialogo más espaciosos.*/
+    box-sizing: border-box;  /*Para que, si habia agregado un padding al formulario, no se pase con este nuevo padding que agrego. Lo tiene en cuenta */
+    font-size: 17px;
+    border: none;
+    max-width: 500px;
+}
+
+
+textarea{
+     min-height: 100px;
+     max-height: 200px;
+     max-width: 500px;
+     min-width: 400px;
+}
+
+
+
+@media (max-width: 950px){
+ 
+    .contacts-card{
+        background-color: var( --primary-color);
+        color: var(--text-color-inverse);
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 100%;
+        margin: 15px;
+        max-width: 1300px;
+        border-radius: 10px;
+    }
+
+}
